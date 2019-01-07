@@ -1,5 +1,8 @@
 <?php
-
+use App\Turma;
+use App\Curso;
+use App\Instrutor;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +15,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $turma = Turma::all();
+    $escola = DB::table('escola')->first();
+
+    return view('index',compact('turma','escola'));
+})->middleware('auth');
+
+Route::get('dados',function(){
+	$cursos = Curso::all();
+	$instrutores = Instrutor::all();
+
+	$dados = [$cursos,$instrutores];
+	return response()->json($dados);
 });
+
+Auth::routes();
+
