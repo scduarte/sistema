@@ -2762,6 +2762,7 @@ __webpack_require__.r(__webpack_exports__);
 
       switch (true) {
         case this.mostrarTurmas == false:
+          this.mostrarCursos = false;
           this.mostrarTurmas = true;
           this.mostrarAlunos = false;
           this.mostrarInstrutores = false;
@@ -2769,6 +2770,7 @@ __webpack_require__.r(__webpack_exports__);
           break;
 
         case this.mostrarTurmas == true:
+          this.mostrarCursos = false;
           this.mostrarTurmas = false;
           this.mostrarAlunos = false;
           this.mostrarInstrutores = false;
@@ -2794,6 +2796,7 @@ __webpack_require__.r(__webpack_exports__);
           break;
 
         case this.mostrarCursos == true:
+          this.mostrarCursos = false;
           this.mostrarTurmas = false;
           this.mostrarAlunos = false;
           this.mostrarInstrutores = false;
@@ -2832,6 +2835,7 @@ __webpack_require__.r(__webpack_exports__);
       switch (true) {
         case this.mostrarListaInstrutores == false:
           this.mostrarListaInstrutores = true;
+          this.mostrarCursos = false;
           this.mostrarTurmas = false;
           this.mostrarAlunos = false;
           this.mostrarInstrutores = false;
@@ -2839,6 +2843,7 @@ __webpack_require__.r(__webpack_exports__);
 
         case this.mostrarListaInstrutores == true:
           this.mostrarListaInstrutores = false;
+          this.mostrarCursos = false;
           this.mostrarTurmas = false;
           this.mostrarAlunos = false;
           this.mostrarInstrutores = false;
