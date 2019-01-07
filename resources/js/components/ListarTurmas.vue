@@ -149,7 +149,7 @@
         <editar-turma :turma="turma" :instrutores="listaInstrutores" :cursos="cursos" @emit="atualizarLista"></editar-turma>
 
         <cadastrar-instrutores @cadastroOk="buscarInstrutores"></cadastrar-instrutores>
-        <cadastrar-curso @emit="listarCursos"></cadastrar-curso>
+        <cadastrar-curso @emit="listarCursosUp"></cadastrar-curso>
 
     </div>
 </template>
@@ -224,6 +224,16 @@
                   })
 
             },
+            listarCursosUp(){
+
+                axios
+                  .get('./api/listar_cursos')
+                  .then(response => {
+                    this.listaCursos = response.data.data
+                    this.pagination = response.data
+                  })
+
+            },
             listarCursos(){
 
                 switch(true){
@@ -256,7 +266,7 @@
                 axios
                     .post('./api/apagar_curso',{id: id})
                     .then(response => {
-                        this.listarCursos()
+                        this.listarCursosUp()
                     })
             },
             editarTurma(id){

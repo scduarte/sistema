@@ -2783,8 +2783,16 @@ __webpack_require__.r(__webpack_exports__);
         _this.pagination = response.data;
       });
     },
-    listarCursos: function listarCursos() {
+    listarCursosUp: function listarCursosUp() {
       var _this2 = this;
+
+      axios.get('./api/listar_cursos').then(function (response) {
+        _this2.listaCursos = response.data.data;
+        _this2.pagination = response.data;
+      });
+    },
+    listarCursos: function listarCursos() {
+      var _this3 = this;
 
       switch (true) {
         case this.mostrarCursos == false:
@@ -2805,32 +2813,32 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios.get('./api/listar_cursos').then(function (response) {
-        _this2.listaCursos = response.data.data;
-        _this2.pagination = response.data;
+        _this3.listaCursos = response.data.data;
+        _this3.pagination = response.data;
       });
     },
     apagarCurso: function apagarCurso(id) {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.post('./api/apagar_curso', {
         id: id
       }).then(function (response) {
-        _this3.listarCursos();
+        _this4.listarCursosUp();
       });
     },
     editarTurma: function editarTurma(id) {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.post('./api/editar_turma', {
         id: id
       }).then(function (response) {
-        _this4.turma = response.data[0];
-        _this4.listaInstrutores = response.data[1];
-        _this4.cursos = response.data[2];
+        _this5.turma = response.data[0];
+        _this5.listaInstrutores = response.data[1];
+        _this5.cursos = response.data[2];
       });
     },
     listarInstrutores: function listarInstrutores() {
-      var _this5 = this;
+      var _this6 = this;
 
       switch (true) {
         case this.mostrarListaInstrutores == false:
@@ -2851,70 +2859,70 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios.get('./api/listar_instrutores').then(function (response) {
-        _this5.listaInstrutores = response.data.data;
-        _this5.pagination = response.data;
+        _this6.listaInstrutores = response.data.data;
+        _this6.pagination = response.data;
       });
     },
     atualizarLista: function atualizarLista(id) {
-      var _this6 = this;
+      var _this7 = this;
 
       axios.get('./api/listar_turmas').then(function (response) {
-        _this6.listaTurmas = response.data.data;
-        _this6.pagination = response.data;
+        _this7.listaTurmas = response.data.data;
+        _this7.pagination = response.data;
       });
       this.buscarInstrutor(id);
     },
     buscarAlunos: function buscarAlunos(id) {
-      var _this7 = this;
+      var _this8 = this;
 
       axios.get('./api/listar_alunos/' + id).then(function (response) {
-        _this7.alunos = response.data;
-        _this7.mostrarAlunos = true;
+        _this8.alunos = response.data;
+        _this8.mostrarAlunos = true;
       });
     },
     buscarInstrutor: function buscarInstrutor(id) {
-      var _this8 = this;
+      var _this9 = this;
 
       axios.get('./api/listar_instrutores/' + id).then(function (response) {
         console.log(response.data);
-        _this8.instrutores = response.data;
-        _this8.mostrarInstrutores = true;
+        _this9.instrutores = response.data;
+        _this9.mostrarInstrutores = true;
       });
     },
     buscarInstrutores: function buscarInstrutores() {
-      var _this9 = this;
+      var _this10 = this;
 
       axios.get('./api/listar_instrutores').then(function (response) {
-        _this9.listaInstrutores = response.data.data;
-        _this9.pagination = response.data;
-        _this9.mostrarListaInstrutores = true;
+        _this10.listaInstrutores = response.data.data;
+        _this10.pagination = response.data;
+        _this10.mostrarListaInstrutores = true;
       });
     },
     apagarTurma: function apagarTurma(id) {
-      var _this10 = this;
+      var _this11 = this;
 
       axios.post('./api/apagar_turma', {
         id: id
       }).then(function (response) {
-        _this10.listaTurmas = response.data.data;
-        _this10.pagination = response.data;
+        _this11.listaTurmas = response.data.data;
+        _this11.pagination = response.data;
       });
     },
     apagarInstrutor: function apagarInstrutor(id) {
-      var _this11 = this;
+      var _this12 = this;
 
       axios.post('./api/apagar_instrutores', {
         id: id
       }).then(function (response) {
-        _this11.buscarInstrutores();
+        _this12.buscarInstrutores();
       });
     },
     navigate: function navigate(page) {
-      var _this12 = this;
+      var _this13 = this;
 
       axios.get('./api/listar_turmas?page=' + page).then(function (response) {
-        _this12.listaTurmas = response.data.data;
-        _this12.pagination = response.data;
+        _this13.listaTurmas = response.data.data;
+        _this13.pagination = response.data;
       });
     }
   }
@@ -40940,7 +40948,7 @@ var render = function() {
         on: { cadastroOk: _vm.buscarInstrutores }
       }),
       _vm._v(" "),
-      _c("cadastrar-curso", { on: { emit: _vm.listarCursos } })
+      _c("cadastrar-curso", { on: { emit: _vm.listarCursosUp } })
     ],
     1
   )
